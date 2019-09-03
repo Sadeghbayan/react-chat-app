@@ -3,7 +3,7 @@ import login from './login/login'
 
 
 const rootReducer = combineReducers({
-    login: login,
+    UserInfo: login,
 })
 
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Icon, Input, Button, Layout, Row, Col, Typography } from 'antd';
+import { Form, Icon, Input, Button, Layout, Row, Col, Typography, notification } from 'antd';
 
 const { Content } = Layout;
 const { Title } = Typography;
@@ -11,12 +11,30 @@ class Login extends React.Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
                 var self = this;
-                console.log(values)
+                self.props.loginRequest(values)
             }
         });
     }
+    componentDidUpdate(prevProps, prevState) {
+        if(!prevProps.username && this.props.username){
+            const {status, username} = this.props.username
+            var self = this;
+            if(status) {
+                notification['success']({
+                    message: `Hello ${username}`,
+                    description:
+                        'Welcome to the chat app.',
+                    icon: <Icon type="smile" style={{ color: '#108ee9' }} />,
+                    duration: 2,
+                });
+                setTimeout(function () {
+                    self.props.history.push('/')
+                }, 500)
+            }
+        }
+    }
+
     render() {
         const { getFieldDecorator } = this.props.form;
         return (

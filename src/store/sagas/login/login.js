@@ -1,10 +1,23 @@
 import { call, put, throttle, takeLatest } from 'redux-saga/effects';
 
+let status = false,
+    userRequest = [];
 
+function loginRequest(action) {
+    userRequest.username = action.username
+    userRequest.status = true
+    localStorage.setItem("token", JSON.stringify(Date.now()));
+    return userRequest;
+}
 
-function* loginRequest(action) {
-    console.log(action)
+function* handleRequest(action) {
+    try {
+        const requestResponse = yield call(loginRequest, action.payload);
+        yield put({type: "LOGIN_REQUEST_SUCCESS", requestResponse});
+    } catch (e) {
+
+    }
 }
 export default function* loginSaga() {
-    yield takeLatest("LOGIN_REQUEST", loginRequest);
+    yield takeLatest("LOGIN_REQUEST", handleRequest);
 }
