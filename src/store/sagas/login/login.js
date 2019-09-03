@@ -1,4 +1,4 @@
-import { call, put, throttle, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 
 let status = false,
     userRequest = [];
