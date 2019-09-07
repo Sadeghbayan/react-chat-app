@@ -6,6 +6,33 @@ $asset_dir: "../src/assets/";
 
 // Colors
 
-$blue: #1890ff;
-$light-green: #33ffbb
+$light-green: #33ffbb;
+$green: #86BB71;
+$blue: #94C2ED;
+$orange: #E38968;
+$gray: #92959E;
+$white: #fff;
 
+
+.alignRight {
+  text-align: right;
+}
+
+.floatRight {
+  float: right;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+ul{
+  li{
+    list-style: none;
+  }
+}

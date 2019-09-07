@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Layout, Row, Col } from 'antd';
-import ChatLayout from "../Chat/ChatLayout"
+import ChatContainer from "../Chat/Container/ChatContainer"
 const { Content, Footer } = Layout;
 
 class Home extends Component {
@@ -10,7 +10,7 @@ class Home extends Component {
                 <Content style={{ padding: '0 50px' }}>
                     <Row>
                         <Col span={20} offset={2}>
-                           <ChatLayout />
+                           <ChatContainer />
                         </Col>
                     </Row>
                 </Content>
