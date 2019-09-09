@@ -11,7 +11,6 @@ const FormItem = Form.Item;
 
 class Login extends React.Component {
     handleSubmit = (e) => {
-        console.log(e)
         this.props.loginRequest(e)
     }
 
@@ -20,6 +19,7 @@ class Login extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
+        console.log(!prevProps.username && this.props.username, "aaa")
         if(!prevProps.username && this.props.username){
             const {status, username} = this.props.username
             var self = this;

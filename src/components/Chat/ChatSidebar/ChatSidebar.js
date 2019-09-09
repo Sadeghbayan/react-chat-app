@@ -30,7 +30,7 @@ class ChatSidebar extends Component {
 }
 
 ChatSidebar.propTypes = {
-    users: PropTypes.object
+    users: PropTypes.array
 };
 
 export default ChatSidebar;

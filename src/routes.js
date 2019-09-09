@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom'
 
 import Login from './components/Auth/Container/LoginContainer';
-import Home from './components/Home/Home';
+import Home from './components/Home/container/homeContainer';
 
 
 

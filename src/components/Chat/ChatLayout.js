@@ -9,7 +9,6 @@ class ChatLayout extends Component {
         this.props.fetchUsers();
     }
     render() {
-        console.log(this.props)
         return (
             <div className={styles.layoutContainer}>
                 <ChatSidebar users={this.props.users}/>

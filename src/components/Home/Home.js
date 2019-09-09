@@ -5,16 +5,22 @@ const { Content, Footer, Header } = Layout;
 
 class Home extends Component {
     render() {
-        console.log(this.props)
+        const {user} = this.props
+        let userInfo = ''
+        if(!user){
+            userInfo = localStorage.getItem(('user'));
+            userInfo = JSON.parse(userInfo);
+            console.log(userInfo)
+        }
         return (
             <div>
                 <Header>
                     <Row>
                         <Col span={12}>
-                            <span className="white"></span>Hello
+                            <span className="white-color">Hello {(user ? user.username : userInfo.name)} </span>
                             <Icon type="smile" style={{ color: '#fff' }} />
                         </Col>
-                        <Col span={12}>
+                        <Col span={12} className="text-right">
                             <Menu
                                 theme="dark"
                                 mode="horizontal"
