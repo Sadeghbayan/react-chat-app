@@ -4,7 +4,7 @@ let status = false,
     userRequest = [];
 
 function loginRequest(action) {
-    userRequest.username = action.name
+    userRequest.name = action.name
     userRequest.id = action.id
     userRequest.status = true
     localStorage.setItem("token", JSON.stringify(Date.now()));

@@ -1,23 +1,27 @@
 import React, {Component} from 'react';
 import ListUser from '../UsersList/UsersList'
+import ChatActions from '../ChatActions/ChatActions'
 import PropTypes from 'prop-types';
 import styles from './ChatSidebar.module.scss'
 import {Spin} from "antd";
 
-class ChatSidebar extends Component {
-    render() {
-        const {users} = this.props.users
 
+class ChatSidebar extends Component {
+    handleSelectedItem = id => {
+        console.log(id)
+    }
+    render() {
+        const usersList = this.props.usersItem.filter(item => item.id !== this.props.currentUser)
         return (
             <div>
                     <div className={styles.peopleList}>
-                        <div className={styles.search}>
-                            <input type="text" placeholder="search" />
+                        <div className={styles.addConversation}>
+                            <ChatActions {...this.props}/>
                         </div>
                         {
-                            users ? (
+                            this.props.usersItem ? (
                                 <ul className={styles.list}>
-                                    {users.map(item => <ListUser item={item} key={item.id} />)}
+                                    {usersList.map(item => <ListUser handleItem={this.handleSelectedItem} item={item} key={item.id} />)}
                                 </ul>
                             ) : (
                                 <div className={styles.loading}> <Spin /> </div>
@@ -30,7 +34,8 @@ class ChatSidebar extends Component {
 }
 
 ChatSidebar.propTypes = {
-    users: PropTypes.array
+    usersItem: PropTypes.array.isRequired,
+    currentUser: PropTypes.string.isRequired
 };
 
 export default ChatSidebar;

@@ -16,7 +16,7 @@ class UsersBoxItem extends Component {
     }
     render() {
         let colorClass = colorClasses[Math.floor(Math.random() * colorClasses.length)];
-        colorClasses = colorClasses.filter(item => item !== colorClass)
+        // colorClasses = colorClasses.filter(item => item !== colorClass)
         return (
             <div className={`${styles.box} ${colorClass}`}>
                 <div className={styles.dot}></div>
@@ -35,6 +35,8 @@ class UsersBoxItem extends Component {
 }
 
 UsersBoxItem.propTypes = {
-    item: PropTypes.object
+    item: PropTypes.object,
+    loading: PropTypes.array
+
 };
 export default UsersBoxItem;

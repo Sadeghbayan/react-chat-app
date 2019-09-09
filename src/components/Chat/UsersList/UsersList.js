@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
+import {Icon} from 'antd'
 import PropTypes from 'prop-types';
 import styles from '../ChatSidebar/ChatSidebar.module.scss'
-// TODO : FiXME styles should seperate from chatsidebar
+// TODO : FiXME styles should be seperate from chatsidebar
 
 class UsersList extends Component {
     render() {
         return (
             <div>
-                <li className={styles.clearfix}>
+                <li className={styles.clearfix} onClick={()=>this.props.handleItem(this.props.item.id)}>
                     <a className={styles.about}>
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar" />
+                        <Icon type="smile" style={{ fontSize:'36px' }}/>
                         <span className={styles.info}>
                             <span className={styles.name}>{this.props.item.name}</span>
                             <span className={styles.status}>

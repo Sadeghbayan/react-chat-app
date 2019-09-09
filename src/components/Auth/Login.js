@@ -19,13 +19,12 @@ class Login extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log(!prevProps.username && this.props.username, "aaa")
         if(!prevProps.username && this.props.username){
-            const {status, username} = this.props.username
+            const {status, name} = this.props.username
             var self = this;
             if(status) {
                 notification['success']({
-                    message: `Hello ${username}`,
+                    message: `Hello ${name}`,
                     description:
                         'Welcome to the chat app.',
                     icon: <Icon type="smile" style={{ color: '#108ee9' }} />,
@@ -52,7 +51,7 @@ class Login extends React.Component {
                             {
                                 users ? (
                                     <div className={styles.usersWrapper}>
-                                        {users.map(item => <UsersBoxItem signIn={this.handleSubmit} item={item} key={item.id} />)}
+                                        {users.map(item => <UsersBoxItem signIn={this.handleSubmit} item={item} key={item.id}/>)}
                                     </div>
                                 ) : (
                                     <div className={styles.loading}> <Spin /> </div>

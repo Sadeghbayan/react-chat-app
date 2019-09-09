@@ -9,7 +9,6 @@ const login = (state = [], action) => {
     switch (action.type) {
         case LOGIN_REQUEST_SUCCESS:
             let newState = {...state, userRequest: action.requestResponse};
-            console.log(newState)
             return newState;
         default:
             return state

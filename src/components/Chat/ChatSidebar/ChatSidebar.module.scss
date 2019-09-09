@@ -3,6 +3,27 @@
 .peopleList {
   width:260px;
   float: left;
+  &.black{
+    float: none;
+    width: auto;
+    ul{
+      color: $dark;
+      height: auto;
+      .about{
+        color: $dark;
+        i{
+          color: $dark;
+        }
+      }
+    }
+  }
+  .addConversation {
+    padding: 1.4rem 1.3rem .5rem;
+    button{
+      font-size: .9rem;
+      height: 38px;
+    }
+  }
   .search {
     padding: 20px;
   }
@@ -42,13 +63,16 @@
     transition: all .3s ease-in-out;
     padding: .4rem;
     border-radius: 4px;
+    i{
+      color: $white;
+    }
     &:hover {
       background: rgba($light-gray, .24);
     }
   }
   .info{
     align-self: center;
-    padding-left: .3rem;
+    padding-left: .5rem;
   }
   .status {
     color: $gray;

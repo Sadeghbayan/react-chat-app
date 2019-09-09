@@ -5,6 +5,7 @@ const { Content, Footer, Header } = Layout;
 
 class Home extends Component {
     logOut = () => {
+        this.props.logOutRequest()
         localStorage.clear();
         this.props.history.push('/login')
     }
@@ -14,14 +15,13 @@ class Home extends Component {
         if(!user){
             userInfo = localStorage.getItem(('user'));
             userInfo = JSON.parse(userInfo);
-            console.log(userInfo)
         }
         return (
             <div>
                 <Header>
                     <Row>
                         <Col span={12}>
-                            <span className="white-color">Hello {(user ? user.username : userInfo.name)} </span>
+                            <span className="white-color">Hello {(user ? user.name : userInfo.name)} </span>
                             <Icon type="smile" style={{ color: '#fff' }} />
                         </Col>
                         <Col span={12} className="text-right">
