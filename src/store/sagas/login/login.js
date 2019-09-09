@@ -4,9 +4,12 @@ let status = false,
     userRequest = [];
 
 function loginRequest(action) {
-    userRequest.username = action.username
+    userRequest.username = action.name
+    userRequest.id = action.id
     userRequest.status = true
+    console.log(userRequest)
     localStorage.setItem("token", JSON.stringify(Date.now()));
+    localStorage.setItem("user", JSON.stringify(action));
     return userRequest;
 }
 

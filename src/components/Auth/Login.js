@@ -1,5 +1,8 @@
 import React from 'react';
-import { Form, Icon, Input, Button, Layout, Row, Col, Typography, notification } from 'antd';
+import {Form, Icon, Input, Button, Layout, Row, Col, Typography, notification, Spin} from 'antd';
+import UsersBoxItem from "../Users/UsersBoxItem"
+import styles from "./Login.module.scss";
+
 
 const { Content } = Layout;
 const { Title } = Typography;
@@ -8,14 +11,14 @@ const FormItem = Form.Item;
 
 class Login extends React.Component {
     handleSubmit = (e) => {
-        e.preventDefault();
-        this.props.form.validateFields((err, values) => {
-            if (!err) {
-                var self = this;
-                self.props.loginRequest(values)
-            }
-        });
+        console.log(e)
+        this.props.loginRequest(e)
     }
+
+    componentDidMount() {
+        this.props.fetchUsers();
+    }
+
     componentDidUpdate(prevProps, prevState) {
         if(!prevProps.username && this.props.username){
             const {status, username} = this.props.username
@@ -37,28 +40,23 @@ class Login extends React.Component {
 
     render() {
         const { getFieldDecorator } = this.props.form;
+        const {users} = this.props.users
         return (
             <div className="login">
                 <Row>
                     <Col span={12} offset={6}>
                         <Content style={{ padding: '50px 0' }}>
                             <Typography>
-                                <Title>Sign In</Title>
+                                <Title>Sign In With:</Title>
                             </Typography>
-                            <Form onSubmit={this.handleSubmit} className="login-form">
-                                <FormItem>
-                                    {getFieldDecorator('username', {
-                                        rules: [{ required: true, message: 'username is required.' }],
-                                    })(
-                                        <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
-                                    )}
-                                </FormItem>
-                                <FormItem>
-                                    <Button type="primary" htmlType="submit" className="login-form-button">
-                                        Login
-                                    </Button>
-                                </FormItem>
-                            </Form>
+                            {
+                                users ? (
+                                    <div className={styles.usersWrapper}>
+                                        {users.map(item => <UsersBoxItem signIn={this.handleSubmit} item={item} key={item.id} />)}
+                                    </div>
+                                ) : (
+                                    <div className={styles.loading}> <Spin /> </div>
+                            )}
                         </Content>
                     </Col>
                 </Row>

@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
+import ListUser from '../UsersList/UsersList'
 import PropTypes from 'prop-types';
 import styles from './ChatSidebar.module.scss'
 import {Spin} from "antd";
 
 class ChatSidebar extends Component {
     render() {
-        const {users} = this.props
+        const {users} = this.props.users
 
         return (
             <div>
@@ -16,15 +17,7 @@ class ChatSidebar extends Component {
                         {
                             users ? (
                                 <ul className={styles.list}>
-                                    <li className={styles.clearfix}>
-                                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar" />
-                                        <div className={styles.about}>
-                                            <div className={styles.name}>Vincent Porter</div>
-                                            <div className={styles.status}>
-                                                online
-                                            </div>
-                                        </div>
-                                    </li>
+                                    {users.map(item => <ListUser item={item} key={item.id} />)}
                                 </ul>
                             ) : (
                                 <div className={styles.loading}> <Spin /> </div>
@@ -37,7 +30,7 @@ class ChatSidebar extends Component {
 }
 
 ChatSidebar.propTypes = {
-    users: PropTypes.array
+    users: PropTypes.object
 };
 
 export default ChatSidebar;

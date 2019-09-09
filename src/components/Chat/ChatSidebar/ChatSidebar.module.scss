@@ -23,11 +23,11 @@
   }
 
   ul {
-    padding: 20px;
+    padding: 9px 15px;
     height: 300px;
     color: $white;
     li {
-      padding-bottom: 20px;
+      padding-bottom: 12px;
     }
   }
 
@@ -36,16 +36,23 @@
   }
 
   .about {
-    float: left;
     margin-top: 8px;
+    color: $white;
+    display: flex;
+    transition: all .3s ease-in-out;
+    padding: .4rem;
+    border-radius: 4px;
+    &:hover {
+      background: rgba($light-gray, .24);
+    }
   }
-
-  .about {
-    padding-left: 8px;
+  .info{
+    align-self: center;
+    padding-left: .3rem;
   }
-
   .status {
     color: $gray;
+    display: block;
   }
   .loading {
     text-align: center;

@@ -5,7 +5,7 @@ import {
 } from '../../actions/names';
 
 
-const users = (state = [], action) => {
+const usersList = (state = [], action) => {
     switch (action.type) {
         case FETCH_USERS:
             return {
@@ -31,4 +31,4 @@ const users = (state = [], action) => {
     }
 }
 
-export default users;
+export default usersList;

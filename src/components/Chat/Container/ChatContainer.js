@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ChatLayout from '../ChatLayout'
-import { fetchUsers } from '../../../store/actions/chat/chatActions'
+import { fetchUsers } from '../../../store/actions/usersList/usersListActions'
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -9,7 +9,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 const mapStateToProps = (state) => {
     return {
-        users : state.Chat.users,
+        users : state.users,
     }
 }
 

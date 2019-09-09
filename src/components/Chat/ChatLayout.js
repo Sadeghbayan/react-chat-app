@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import ChatSidebar from "./ChatSidebar/ChatSidebar"
 import ChatBox from "./ChatBox/ChatBox"
 import styles from "./ChatLayout.module.scss"
-import {fetchUsers} from "../../store/actions/chat/chatActions";
 
 class ChatLayout extends Component {
 
@@ -10,6 +9,7 @@ class ChatLayout extends Component {
         this.props.fetchUsers();
     }
     render() {
+        console.log(this.props)
         return (
             <div className={styles.layoutContainer}>
                 <ChatSidebar users={this.props.users}/>

@@ -8,6 +8,7 @@ import {
 const login = (state = [], action) => {
     switch (action.type) {
         case LOGIN_REQUEST_SUCCESS:
+            console.log(action)
             let newState = {...state, userRequest: action.requestResponse};
             return newState;
         default:

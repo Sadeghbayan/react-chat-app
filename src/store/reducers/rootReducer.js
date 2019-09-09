@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 import login from './login/login'
-import chat from './chat/chat'
+import usersList from './usersList/usersList'
 
 
 const rootReducer = combineReducers({
     UserInfo: login,
-    Chat: chat
+    users: usersList
 })
 
 
