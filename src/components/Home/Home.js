@@ -4,6 +4,10 @@ import ChatContainer from "../Chat/Container/ChatContainer"
 const { Content, Footer, Header } = Layout;
 
 class Home extends Component {
+    logOut = () => {
+        localStorage.clear();
+        this.props.history.push('/login')
+    }
     render() {
         const {user} = this.props
         let userInfo = ''
@@ -27,7 +31,7 @@ class Home extends Component {
                                 defaultSelectedKeys={['2']}
                                 style={{ lineHeight: '64px' }}
                             >
-                                <Menu.Item key="1">Log out</Menu.Item>
+                                <Menu.Item key="1" onClick={this.logOut}>Log out</Menu.Item>
                             </Menu>
                         </Col>
                     </Row>
