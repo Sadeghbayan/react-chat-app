@@ -1,8 +1,14 @@
 @import "../../scss/utils/config";
 .layoutContainer{
     margin: 30px auto;
-    width: 750px;
+    width: 260px;
     background: $dark-gray;
     border-radius: 5px;
-  display: flex;
+    display: flex;
+    transition: all .3s ease-in-out;
+    height: 450px;
+    &.active{
+      width: 750px;
+      height: auto;
+    }
  }

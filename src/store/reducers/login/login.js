@@ -4,7 +4,7 @@ import {
     LOGIN_REQUEST_FAILED
 } from '../../actions/names';
 
-
+let chatHistory = []
 const login = (state = [], action) => {
     switch (action.type) {
         case LOGIN_REQUEST_SUCCESS:

@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 import login from './login/login'
 import usersList from './usersList/usersList'
+import chat from './chat/chat'
 
 const appReducer = combineReducers({
     UserInfo: login,
     users: usersList,
+    chat: chat,
 })
 const initialState = appReducer({}, {})
 

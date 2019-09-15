@@ -7,8 +7,6 @@ import styles from "./Login.module.scss";
 const { Content } = Layout;
 const { Title } = Typography;
 
-const FormItem = Form.Item;
-
 class Login extends React.Component {
     handleSubmit = (e) => {
         this.props.loginRequest(e)
@@ -38,7 +36,6 @@ class Login extends React.Component {
     }
 
     render() {
-        const { getFieldDecorator } = this.props.form;
         const {users} = this.props.users
         return (
             <div className="login">
@@ -64,4 +61,4 @@ class Login extends React.Component {
         );
     }
 }
-export default Form.create()(Login);
+export default Login;

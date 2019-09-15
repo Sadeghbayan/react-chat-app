@@ -1,12 +1,11 @@
 @import "../../../scss/utils/config";
-
 .chat {
   width: 490px;
+  opacity: 1;
   float:left;
   background: #F2F5F8;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-
   color: #434651;
 
   .chatHeader {
@@ -44,7 +43,7 @@
     padding: 30px 30px 20px;
     border-bottom: 2px solid white;
     overflow-y: scroll;
-    height: 300px;
+    height: 320px;
 
     .messageData {
       margin-bottom: 15px;

@@ -8,7 +8,13 @@ import {Spin} from "antd";
 
 class ChatSidebar extends Component {
     handleSelectedItem = id => {
-        console.log(id)
+        let users = []
+        users.users = [...this.props.currentUser, ...id]
+        if(this.props.chatHistory){
+            this.props.chatHistory.indexOf(id) === -1 ? this.props.personalChatRequest(users) : console.log("This item already exists");
+        }else{
+            this.props.personalChatRequest(users)
+        }
     }
     render() {
         const usersList = this.props.usersItem.filter(item => item.id !== this.props.currentUser)
@@ -35,7 +41,8 @@ class ChatSidebar extends Component {
 
 ChatSidebar.propTypes = {
     usersItem: PropTypes.array.isRequired,
-    currentUser: PropTypes.string.isRequired
+    currentUser: PropTypes.string.isRequired,
+    personalChatRequest: PropTypes.func.isRequired,
 };
 
 export default ChatSidebar;

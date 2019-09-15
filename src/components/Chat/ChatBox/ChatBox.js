@@ -1,17 +1,34 @@
 import React, {Component} from 'react';
 import styles from "./ChatBox.module.scss"
-
+import PropTypes from 'prop-types';
+import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import ChatSidebar from "../ChatSidebar/ChatSidebar";
+const { TextArea } = Input;
 
 class ChatBox extends Component {
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+                let senderId = this.props.senderId
+                values['senderId'] = senderId
+                values['conversationId'] = this.props.conversationId
+                this.props.sendMessageInPersonalChat(values)
+            }
+        });
+    }
+
     render() {
+        const { getFieldDecorator } = this.props.form;
+
+        let targetPersonId = this.props.targetPerson
+        let targetPersonName = this.props.users.find(item => item.id == targetPersonId)
         return (
                 <div className={styles.chat}>
                     <div className={`${styles.chatHeader} ${styles.clearfix}`}>
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg" alt="avatar" />
-
                         <div className={styles.chatAbout}>
-                            <div className={styles.chatWith}>Chat with Vincent Porter</div>
-                            <div className={styles.chatNumMessages}>already 1 902 messages</div>
+                            <div className={styles.chatWith}>Chat with {targetPersonName.name}</div>
                         </div>
                     </div>
 
@@ -42,15 +59,31 @@ class ChatBox extends Component {
                     </div>
 
                     <div className={`${styles.chatMessage} ${styles.clearfix}`}>
-                        <textarea name="message-to-send" placeholder ="Type your message" rows="3"></textarea>
-
-                        <button>Send</button>
-
+                        <Form onSubmit={this.handleSubmit} className="chat-form">
+                            <Form.Item>
+                                {getFieldDecorator('message', {
+                                    rules: [{ required: true, message: 'Please type your message' }],
+                                })(
+                                    <TextArea rows={3} placeholder="Type your message"/>,
+                                )}
+                            </Form.Item>
+                            <Form.Item>
+                                <Button htmlType="submit">
+                                   Send
+                                </Button>
+                            </Form.Item>
+                        </Form>
                     </div>
 
                 </div>
         );
     }
 }
-
-export default ChatBox;
+ChatBox.propTypes = {
+    targetPerson: PropTypes.string.isRequired,
+    senderId: PropTypes.string.isRequired,
+    sendMessageInPersonalChat: PropTypes.func.isRequired,
+    users: PropTypes.array.isRequired,
+    conversationId: PropTypes.string.isRequired
+};
+export default Form.create()(ChatBox);

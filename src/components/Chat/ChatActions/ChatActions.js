@@ -21,10 +21,14 @@ class ChatActions extends Component {
 
 
     handleSelectedItem = (id) => {
-        console.log(id);
+        console.log(this.props)
+        let users = []
+        users.users = [...this.props.currentUser, ...id]
+        this.props.personalChatRequest(users)
         this.setState({
             visible: false,
         });
+
     }
 
     handleCancel = e => {
@@ -60,6 +64,11 @@ class ChatActions extends Component {
                     title={this.state.title}
                     visible={this.state.visible}
                     onCancel={this.handleCancel}
+                    footer={[
+                        <Button key="back" onClick={this.handleCancel}>
+                            Cancel
+                        </Button>,
+                    ]}
                 >
                     <div className={`${styles.peopleList} ${styles.black}`}>
                         <ul>
