@@ -10,11 +10,11 @@ class ChatSidebar extends Component {
     handleSelectedItem = id => {
         let users = []
         users.users = [...this.props.currentUser, ...id]
-        if(this.props.chatHistory){
-            this.props.chatHistory.indexOf(id) === -1 ? this.props.personalChatRequest(users) : console.log("This item already exists");
-        }else{
+        // if(this.props.chatHistory){
+        //     this.props.chatHistory.indexOf(id) === -1 ? this.props.personalChatRequest(users) : this.props.getMessageHistory(id);
+        // }else{
             this.props.personalChatRequest(users)
-        }
+        // }
     }
     render() {
         const usersList = this.props.usersItem.filter(item => item.id !== this.props.currentUser)

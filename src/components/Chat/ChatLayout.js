@@ -11,12 +11,6 @@ class ChatLayout extends Component {
         }
     }
 
-
-    componentDidUpdate(prevProps, prevState) {
-        console.log(this.props)
-    }
-
-
     render() {
         let userInfo = ''
         if(!this.props.users.UserInfo.length > 0){
@@ -35,6 +29,7 @@ class ChatLayout extends Component {
                                          currentUser={userInfo.id}
                                          personalChatRequest={this.props.personalChatRequest}
                                          chatHistory={this.props.users.chat.chatHistory}
+                                         getMessageHistory={this.props.getMessageHistory}
                             />
                             {this.props.users.chat.chatStatus ?
                                 (
@@ -43,6 +38,8 @@ class ChatLayout extends Component {
                                              sendMessageInPersonalChat={this.props.sendMessageInPersonalChat}
                                              users={this.props.users.users.users}
                                              conversationId={this.props.users.chat.personalChatConversationId.id}
+                                             messages={this.props.users.chat.messages}
+                                             listMsg={this.props.listMsg}
                                     />
                                 ) : ''}
                         </div>
@@ -56,5 +53,9 @@ class ChatLayout extends Component {
         );
     }
 }
+
+
+
+
 
 export default ChatLayout;

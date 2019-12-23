@@ -18,6 +18,7 @@ function personalChatRequest(action) {
 function* personalChat(action) {
     try {
         const requestResponse = yield call(personalChatRequest, action.payload);
+        requestResponse.data.targetId = action.payload.users['1'];
         yield put({type: "PERSONAL_CHAT_SUCCESS", data : requestResponse.data});
     } catch (e) {
         yield put({type: "PERSONAL_CHAT_FAILED", message: e.message});

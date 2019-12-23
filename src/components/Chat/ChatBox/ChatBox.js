@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import styles from "./ChatBox.module.scss"
 import PropTypes from 'prop-types';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
-import ChatSidebar from "../ChatSidebar/ChatSidebar";
+import ChatText from '../ChatText/ChatText'
+import UsersBoxItem from "../../Users/UsersBoxItem";
 const { TextArea } = Input;
 
 class ChatBox extends Component {
@@ -13,6 +14,7 @@ class ChatBox extends Component {
             if (!err) {
                 let senderId = this.props.senderId
                 values['senderId'] = senderId
+                values['targetPerson'] = this.props.targetPerson
                 values['conversationId'] = this.props.conversationId
                 this.props.sendMessageInPersonalChat(values)
             }
@@ -21,7 +23,6 @@ class ChatBox extends Component {
 
     render() {
         const { getFieldDecorator } = this.props.form;
-
         let targetPersonId = this.props.targetPerson
         let targetPersonName = this.props.users.find(item => item.id == targetPersonId)
         return (
@@ -33,29 +34,10 @@ class ChatBox extends Component {
                     </div>
 
                     <div className={styles.chatHistory}>
-                        <ul>
-                            <li className={styles.clearfix}>
-                                <div className={`${styles.messageData} ${styles.alignRight} ${styles.floatRight}`}>
-                                    <span className={styles.messageDataTime}>10:10 AM, Today</span> &nbsp; &nbsp;
-                                    <span className={styles.messageDataName}>Olia</span>
-
-                                </div>
-                                <div className={`${styles.message} ${styles.otherMessage} ${styles.floatRight}`}>
-                                    Hi Vincent, how are you? How is the project coming along?
-                                </div>
-                            </li>
-
-                            <li>
-                                <div className={styles.messageData}>
-                                    <span className={styles.messageDataName}> Vincent</span>
-                                    <span className={styles.messageDataTime}>10:12 AM, Today</span>
-                                </div>
-                                <div className={`${styles.message} ${styles.myMessage}`}>
-                                    Are we meeting today? Project has been already finished and I have results to show you.
-                                </div>
-                            </li>
-                        </ul>
-
+                        {this.props.listMsg.length > 0 ?
+                            (this.props.listMsg.map(item => <ChatText msg={item.txt} key={item.id}/>)) :
+                            (<span className="text-center">No messages</span>)
+                        }
                     </div>
 
                     <div className={`${styles.chatMessage} ${styles.clearfix}`}>

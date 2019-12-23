@@ -34,7 +34,7 @@ class Layout extends Component {
                     <Home />
 
                 </Content>
-                <Footer style={{ textAlign: 'center' }}>Bunq Assignment</Footer>
+                <Footer style={{ textAlign: 'center' }}>Chat App</Footer>
             </Layout>
 
     );

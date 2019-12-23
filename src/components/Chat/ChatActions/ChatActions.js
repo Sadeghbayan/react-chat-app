@@ -21,7 +21,6 @@ class ChatActions extends Component {
 
 
     handleSelectedItem = (id) => {
-        console.log(this.props)
         let users = []
         users.users = [...this.props.currentUser, ...id]
         this.props.personalChatRequest(users)

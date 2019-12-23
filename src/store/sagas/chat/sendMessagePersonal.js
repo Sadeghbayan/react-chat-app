@@ -12,6 +12,7 @@ function personalChatMessageRequest(action) {
             data,
         )
         .then(function (response) {
+            response.data.targetId = action.targetPerson
             response.data.txt = data.message
             return response
         })
